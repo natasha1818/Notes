@@ -92,6 +92,7 @@ fun main() {
     NotesPost.addNotes("Лысые кошки", "Несчастные лысые кошки")
     NotesPost.addNotes("Черные кошки", "Очень черные кошки")
     NotesPost.getNotes()
+    NotesPost.addComment(3,1,"черные кошки всем нравятся")
     NotesPost.addComment(1, 1, "Всем нравится")
     NotesPost.addComment(1, 2, "Красивые....")
     NotesPost.addComment(2, 1, "Бедолаги")
