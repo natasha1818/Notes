@@ -70,3 +70,13 @@ class WallServiceTest {
     }
 
 }
+class Notes{
+    @Test
+     fun addNotes(){
+        val service = NotesPost
+        service.addNotes("Cat","text")
+        service.addNotes("Dog", "text")
+         val result = service.mapNotes
+        assertNotNull(result)
+     }
+}
