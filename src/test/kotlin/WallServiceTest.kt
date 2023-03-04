@@ -69,8 +69,6 @@ class WallServiceTest {
         val result = service.createComment(77, comment)
     }
 
-}
-class Notes{
     @Test
      fun addNotes(){
         val service = NotesPost
@@ -79,4 +77,40 @@ class Notes{
          val result = service.mapNotes
         assertNotNull(result)
      }
+    @Test
+    fun deleteComment() {
+        val service = NotesPost
+        service.addNotes("Cat","text")
+        service.addNotes("Dog", "text")
+        service.addComment(1,1,"text")
+        service.addComment(1,2,"text")
+        service.deleteComment(1,1)
+        val result = service.mapNotes[1]?.notesComment!![0].deleteComment
+        assertTrue(result)
+
+    }
+    @Test
+    fun editNotes(){
+        val service = NotesPost
+        service.addNotes("Cat","text")
+        service.addNotes("Dog", "text")
+        service.editNotes(1,"text2")
+        val result = service.mapNotes[1]?.text
+         assertEquals("text2",result)
+     }
+    @Test
+    fun restoreComment() {
+        val service = NotesPost
+        service.addNotes("Cat","text")
+        service.addNotes("Dog", "text")
+        service.addComment(1,1,"text")
+        service.addComment(1,2,"text")
+        service.deleteComment(1,1)
+        service.restoreComment(1,1)
+        val result = service.mapNotes[1]?.notesComment!![0].deleteComment
+        assertFalse(result)
+
+    }
+
+
 }
